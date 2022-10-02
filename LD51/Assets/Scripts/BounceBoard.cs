@@ -8,7 +8,6 @@ public class BounceBoard : MonoBehaviour
     [LabelText("是否可操作")]public bool isActive;
     [LabelText("左转按键")]public KeyCode rotateLeft;
     [LabelText("右转按键")]public KeyCode rotateRight;
-
     
     public void Update()
     {

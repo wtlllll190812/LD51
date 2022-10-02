@@ -4,34 +4,58 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 
 public enum EBulletType
-{ 
-    hitPlayer,
+{
     hitEnemy,
+    hitPlayer,
     both
 }
 
 public class Bullet : MonoBehaviour
 {
+    public Color colorOnBoth;
+    public Color colorOnHitPlayer;
+    public Color colorOnHitEnemy;
+
     private Vector3 lastPoint;
     private Rigidbody2D rbody;
-    private EBulletType bulletType;
+    private EBulletType _bulletType;
+
+    private EBulletType bulletType
+    {
+        set
+        {
+            switch (value)
+            {
+                case EBulletType.hitPlayer:
+                    GetComponent<SpriteRenderer>().color = colorOnHitPlayer;
+                    break;
+                case EBulletType.hitEnemy:
+                    GetComponent<SpriteRenderer>().color = colorOnHitEnemy;
+                    break;
+                case EBulletType.both:
+                    GetComponent<SpriteRenderer>().color = colorOnBoth;
+                    break;
+                default:
+                    break;
+            }
+            _bulletType = value;
+        }
+        get => _bulletType;
+    }
+
+
 
     void Start()
     {
         rbody=GetComponent<Rigidbody2D>();
-        StartMove(Vector2.down, EBulletType.both);
+        InitBullet(Vector2.down, EBulletType.hitEnemy);
     }
 
     [Button("StartMove")]
-    public void StartMove(Vector2 force,EBulletType type)
+    public void InitBullet(Vector2 force,EBulletType type)
     {
-        ChangeType(type);
         rbody.AddForce(force, ForceMode2D.Impulse);
         lastPoint = transform.position;
-    }
-
-    public void ChangeType(EBulletType type)
-    {
         bulletType = type;
     }
 
@@ -39,6 +63,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("BounceBoard"))
         {
+            bulletType = EBulletType.both;
             Vector2 inVec = transform.position - lastPoint;
             lastPoint = transform.position;
             Vector2 outVec = Vector2.Reflect(inVec, collision.contacts[0].normal);
