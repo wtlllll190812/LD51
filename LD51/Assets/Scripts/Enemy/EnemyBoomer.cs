@@ -5,5 +5,14 @@ using Pathfinding;
 
 public class EnemyBoomer : EnemyBase
 {
-    
+
+    protected override void Attack()
+    {
+        
+    }
+
+    private void OnDestroy()
+    {
+        //±¬Õ¨
+    }
 }
