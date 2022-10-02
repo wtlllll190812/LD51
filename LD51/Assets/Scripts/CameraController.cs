@@ -1,18 +1,18 @@
 using UnityEngine;
+using DG.Tweening;
 using System.Collections;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 
 public class CameraController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float duration;
+    public float strength = 3f;
+    public int vibrato = 10;
 
-    // Update is called once per frame
-    void Update()
+    [Button("屏幕震动")]
+    public void CameraShake()
     {
-        
+        GetComponent<Camera>().DOShakePosition(duration, strength, vibrato);
     }
 }
