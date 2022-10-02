@@ -12,9 +12,9 @@ public enum EBulletType
 
 public class Bullet : MonoBehaviour
 {
-    public Color colorOnBoth;
-    public Color colorOnHitPlayer;
-    public Color colorOnHitEnemy;
+    [ColorUsageAttribute(true, true)] public Color colorOnBoth;
+    [ColorUsageAttribute(true, true)] public Color colorOnHitPlayer;
+    [ColorUsageAttribute(true, true)] public Color colorOnHitEnemy;
 
     private Vector3 lastPoint;
     private Rigidbody2D rbody;
