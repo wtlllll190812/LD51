@@ -22,7 +22,8 @@ public class EnemyCreater : MonoBehaviour
         if (timer >= intervalTimer)
         {
             Vector3 randomPosition = new Vector3(Random.Range(0, mapSizeX), Random.Range(0f, mapSizeY), 0f);
-            Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], randomPosition, Quaternion.identity);
+            var newObj=Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], randomPosition, Quaternion.identity);
+            newObj.transform.SetParent(transform);
             timer = 0;
         }
 
