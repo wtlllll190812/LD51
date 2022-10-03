@@ -6,14 +6,6 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    public Text text;
-
-    public float timer=10f;
-    private void Update()
-    {
-        timer -= Time.deltaTime;
-        text.text = $"{(int)timer}";
-    }
     public void QuitGame()
    {
         Application.Quit();
@@ -26,6 +18,6 @@ public class Menu : MonoBehaviour
 
    public void StartGame()
    {
-       SceneManager.LoadScene("Scene1");
+       SceneManager.LoadScene(1);
    }
 }

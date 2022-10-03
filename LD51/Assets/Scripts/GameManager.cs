@@ -1,13 +1,6 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-<<<<<<< Updated upstream
-using UnityEngine;
-
-public class GameManager : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-=======
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -24,6 +17,7 @@ public class GameManager : MonoBehaviour
     public Text _text;
     public GameObject FailPanel;
     public Text _gradesText;
+    public GameObject DiePanel;
 
     public void Awake()
     {
@@ -32,17 +26,12 @@ public class GameManager : MonoBehaviour
     }
 
     public void Start()
->>>>>>> Stashed changes
     {
-        
+        StartCoroutine(Player());
     }
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator Player()
     {
-<<<<<<< Updated upstream
-        
-=======
         while(player!=null)
         {
             
@@ -60,7 +49,6 @@ public class GameManager : MonoBehaviour
             newBoard.transform.parent = null;
             currentTime = 10;
         }
->>>>>>> Stashed changes
     }
 
     private void Update()
@@ -77,6 +65,8 @@ public class GameManager : MonoBehaviour
         FailPanel.SetActive(true);
         _gradesText.text = $"Your Grades:{(int)GameTimer}";
         yield return new WaitForSeconds(3f);
+        DiePanel.SetActive(true);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(0);
     }
 
