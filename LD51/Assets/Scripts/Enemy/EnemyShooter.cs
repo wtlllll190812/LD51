@@ -12,14 +12,17 @@ public class EnemyShooter : EnemyBase
 
     private void FixedUpdate()
     {
-        Vector3 _target = (target.position - transform.position).normalized;
-        float angle = Mathf.Atan2(_target.y, _target.x) * Mathf.Rad2Deg - 90f;
-        shooter.eulerAngles = new Vector3(0, 0, angle);
+        if (target != null)
+        {
+            Vector3 _target = (target.position - transform.position).normalized;
+            float angle = Mathf.Atan2(_target.y, _target.x) * Mathf.Rad2Deg - 90f;
+            shooter.eulerAngles = new Vector3(0, 0, angle);
+        }
     }
     protected override void Attack()
     {
         timer += Time.deltaTime;
-        if (timer > attackInterval)
+        if (timer > attackInterval&&target!=null)
         {
             GameObject bullet = Instantiate(BulletPrefab, shooter.position , shooter.rotation);
             bullet.GetComponent<Bullet>().InitBullet(shooter.up * bulletForce, EBulletType.hitPlayer);

@@ -25,7 +25,7 @@ public class EnemyBoomer : EnemyBase
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            //TODO ‘Ï≥……À∫¶
+            Destroy(collision.gameObject);
 
         }
     }
