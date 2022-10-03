@@ -29,13 +29,13 @@ public class Bullet : MonoBehaviour
             {
                 case EBulletType.hitPlayer:
                     GetComponent<SpriteRenderer>().color = colorOnHitPlayer;
+                    gameObject.layer = 8;
                     break;
                 case EBulletType.hitEnemy:
                     GetComponent<SpriteRenderer>().color = colorOnHitEnemy;
                     break;
                 case EBulletType.both:
                     GetComponent<SpriteRenderer>().color = colorOnBoth;
-                    gameObject.layer = 8;
                     break;
                 default:
                     break;
@@ -43,6 +43,12 @@ public class Bullet : MonoBehaviour
             _bulletType = value;
         }
         get => _bulletType;
+    }
+
+    public void Update()
+    {
+        if(Vector3.Distance(transform.position,Vector3.zero)>20)
+            Destroy(gameObject);
     }
 
     [Button("StartMove")]
@@ -59,6 +65,8 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("BounceBoard"))
         {
+            if (collision.gameObject.GetComponent<BounceBoard>().isActive)
+                Destroy(gameObject);
             bulletType = EBulletType.both;
             Vector2 inVec = transform.position - lastPoint;
             lastPoint = transform.position;
