@@ -7,21 +7,26 @@ public class EnemyBoomer : EnemyBase
 {
 
     private  static readonly int BoomString = Animator.StringToHash("Boom");
+    protected override void Find()
+    {
+        if (target!=null&&Vector3.Distance(transform.position, target.position) <= attackRange)
+        {
+            aIPath.maxSpeed = 0;
+            Attack();
+        }
+    }
     protected override void Attack()
     {
         animator.Play(BoomString);
         
     }
 
-    public void Die()
-    {
-        Destroy(gameObject);
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log(1);
+            //TODO Ôì³ÉÉËº¦
+
         }
     }
     protected override void ChangeDirction()
@@ -34,5 +39,9 @@ public class EnemyBoomer : EnemyBase
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
+    }
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }

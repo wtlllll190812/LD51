@@ -24,16 +24,25 @@ public class EnemyBase : MonoBehaviour
     public void Update()
     {
         ChangeDirction();
-        if (Vector3.Distance(transform.position, target.position) <= attackRange)
-        {
-            aIPath.maxSpeed = 0;
-            Attack();
-        }
-        else if(Vector3.Distance(transform.position,target.position)>attackRange)
-        {
-            aIPath.maxSpeed = Maxspeed;
-        }
+        Find();
         
+    }
+
+    protected virtual void Find()
+    {
+        if (target != null)
+        {
+
+            if (Vector3.Distance(transform.position, target.position) <= attackRange)
+            {
+                aIPath.maxSpeed = 0;
+                Attack();
+            }
+            else if (Vector3.Distance(transform.position, target.position) > attackRange)
+            {
+                aIPath.maxSpeed = Maxspeed;
+            }
+        }
     }
     protected virtual void Attack()
     {

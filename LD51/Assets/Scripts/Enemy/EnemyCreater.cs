@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyCreater : MonoBehaviour
 {
     public GameObject[] enemyPrefabs;
-
+    public GameObject Player;
     public float intervalTimer;
     public float mapSizeX;
     public float mapSizeY;
@@ -19,7 +19,7 @@ public class EnemyCreater : MonoBehaviour
     private void Update()
     {
          timer += Time.deltaTime;
-        if (timer >= intervalTimer)
+        if (timer >= intervalTimer&&Player!=null)
         {
             Vector3 randomPosition = new Vector3(Random.Range(0, mapSizeX), Random.Range(0f, mapSizeY), 0f);
             var newObj=Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], randomPosition, Quaternion.identity);
