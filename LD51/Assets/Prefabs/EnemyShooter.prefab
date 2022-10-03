@@ -223,9 +223,10 @@ MonoBehaviour:
   aIPath: {fileID: 0}
   attackRange: 5
   Maxspeed: 1
-  target: {fileID: 0}
-  BulletPrefab: {fileID: 0}
+  target: {fileID: 7062251685849742005}
+  BulletPrefab: {fileID: 7922262533794832586, guid: 1dbb24e4ae642e447a0ea62646820970, type: 3}
   attackInterval: 2
+  shooter: {fileID: 7062251685849742005}
 --- !u!95 &19391584
 Animator:
   serializedVersion: 4
