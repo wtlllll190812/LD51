@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour
     private Vector3 lastPoint;
     private Rigidbody2D rbody;
     private EBulletType _bulletType;
+    private float force;
 
     private EBulletType bulletType
     {
@@ -44,7 +45,6 @@ public class Bullet : MonoBehaviour
         get => _bulletType;
     }
 
-
     [Button("StartMove")]
     public void InitBullet(Vector2 force,EBulletType type)
     {
@@ -52,6 +52,7 @@ public class Bullet : MonoBehaviour
         rbody.AddForce(force, ForceMode2D.Impulse);
         lastPoint = transform.position;
         bulletType = type;
+        this.force = force.magnitude;
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -61,8 +62,10 @@ public class Bullet : MonoBehaviour
             bulletType = EBulletType.both;
             Vector2 inVec = transform.position - lastPoint;
             lastPoint = transform.position;
-            Vector2 outVec = Vector2.Reflect(inVec, collision.contacts[0].normal);
-            rbody.velocity = outVec.normalized * 1;
+            Vector2 outVec = Vector2.Reflect(inVec, collision.contacts[0].normal).normalized;
+            rbody.AddForce(force* outVec, ForceMode2D.Impulse);
+            float angle = Mathf.Atan2(outVec.y, outVec.x) * Mathf.Rad2Deg - 90f;
+            transform.eulerAngles = new Vector3(0, 0, angle);
         }
         if (collision.gameObject.CompareTag("Player") && bulletType != EBulletType.hitEnemy)
         {
