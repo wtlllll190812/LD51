@@ -10,6 +10,7 @@ public class EnemyCreater : MonoBehaviour
     public float mapSizeX;
     public float mapSizeY;
 
+
     private float timer;
     private void Start()
     {
