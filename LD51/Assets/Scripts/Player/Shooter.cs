@@ -1,6 +1,6 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {   
@@ -30,9 +30,6 @@ public class Shooter : MonoBehaviour
     void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab,FirePoint.position,FirePoint.rotation);
-        Rigidbody2D rb2D = bullet.GetComponent<Rigidbody2D>();
-        rb2D.AddForce(FirePoint.up * bulletForce, ForceMode2D.Impulse);
+        bullet.GetComponent<Bullet>().InitBullet(FirePoint.up * bulletForce, EBulletType.hitEnemy);
     }
-
-   
 }

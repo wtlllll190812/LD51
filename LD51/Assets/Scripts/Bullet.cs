@@ -34,6 +34,7 @@ public class Bullet : MonoBehaviour
                     break;
                 case EBulletType.both:
                     GetComponent<SpriteRenderer>().color = colorOnBoth;
+                    gameObject.layer = 8;
                     break;
                 default:
                     break;
@@ -44,16 +45,10 @@ public class Bullet : MonoBehaviour
     }
 
 
-
-    void Start()
-    {
-        rbody=GetComponent<Rigidbody2D>();
-        InitBullet(Vector2.down, EBulletType.hitEnemy);
-    }
-
     [Button("StartMove")]
     public void InitBullet(Vector2 force,EBulletType type)
     {
+        rbody=GetComponent<Rigidbody2D>();
         rbody.AddForce(force, ForceMode2D.Impulse);
         lastPoint = transform.position;
         bulletType = type;
@@ -72,10 +67,12 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && bulletType != EBulletType.hitEnemy)
         {
             Destroy(collision.gameObject);
+            Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Enemy") && bulletType != EBulletType.hitPlayer)
         {
             Destroy(collision.gameObject);
+            Destroy(gameObject);
         }
     }
 }
