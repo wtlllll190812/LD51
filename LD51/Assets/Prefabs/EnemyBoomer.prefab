@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 205176550}
   - component: {fileID: 205176551}
   - component: {fileID: 205176552}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemyBoomer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ MonoBehaviour:
   setter: {fileID: 0}
   animator: {fileID: 0}
   aIPath: {fileID: 0}
-  attackRange: 2
+  attackRange: 1
   Maxspeed: 2
   target: {fileID: 0}
 --- !u!50 &205176550
