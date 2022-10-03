@@ -252,7 +252,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 2264724253842438478, guid: 5bfade6d92c1b8744958707db0d75347, type: 3}
   - {fileID: 408869857106628043, guid: 0e7df08aee41cfa4c8a92d1377c3bcdd, type: 3}
-  Player: {fileID: 52584384}
+  Player: {fileID: 0}
   intervalTimer: 2
   mapSizeX: 10
   mapSizeY: 10
@@ -373,11 +373,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2325669515768227528, guid: bcb8db949851fab458e9ed558546c7a6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.25
+      value: -2.88
       objectReference: {fileID: 0}
     - target: {fileID: 2325669515768227528, guid: bcb8db949851fab458e9ed558546c7a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.26
+      value: -3.24
       objectReference: {fileID: 0}
     - target: {fileID: 2325669515768227528, guid: bcb8db949851fab458e9ed558546c7a6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -713,10 +713,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 889721678, guid: ad147d60389b4cf4b8e939a8b7153e0a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.51
-      objectReference: {fileID: 0}
     - target: {fileID: 5411471443133116384, guid: ad147d60389b4cf4b8e939a8b7153e0a, type: 3}
       propertyPath: cam
       value: 

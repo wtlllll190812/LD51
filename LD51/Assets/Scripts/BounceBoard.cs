@@ -18,12 +18,10 @@ public class BounceBoard : MonoBehaviour
         if (!isActive) return;
         if (Input.GetKeyDown(rotateLeft))
         {
-            Debug.Log("sdsd");
             transform.Rotate(Vector3.forward, 45);
         }
         if (Input.GetKeyDown(rotateRight))
         {
-            Debug.Log("sdsdsd");
             transform.Rotate(-Vector3.forward, 45);
         }
     }
